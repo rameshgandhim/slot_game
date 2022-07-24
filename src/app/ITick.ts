@@ -4,8 +4,12 @@ function checkArg(instance: any, arg: string, argType: string) {
 }
 
 export interface ITick {
-    tick(delta?: number): void;
-  }
+  tick(delta?: number): void;
+}
+
+export interface IResizable {
+  resize(width: number, height: number): void;
+}
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

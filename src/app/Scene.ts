@@ -12,7 +12,9 @@ export class Scene {
   readonly stage: Container;
 
   constructor(stage: Container) {
-    this.stage = stage;
+    this.stage = new Container();
+    this.stage.name = 'Scene';
+    stage.addChild(this.stage);
   }
 
   deactivateAll(): void {
@@ -39,5 +41,9 @@ export class Scene {
     for (let i = 0; i < this.tickers.length; i += 1) {
       this.tickers[i].tick(delta);
     }
+  }
+
+  show(visible: boolean): void {
+    this.stage.visible = visible;
   }
 }

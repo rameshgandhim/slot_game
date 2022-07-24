@@ -6,6 +6,8 @@ import {
 import * as PIXI from 'pixi.js';
 
 // import { Tweener } from './app/Tween';
+import { IResizable } from './app/ITick';
+import { PreloaderScreen } from './app/PreLoader';
 import { FPSMeter } from './app/FPSMeter';
 import { Scene } from './app/Scene';
 import { SlotAssets } from './app/assets';
@@ -51,32 +53,50 @@ const setVariable = (element: string, variable: string, value: string | null) =>
   }
 };
 
+const resizeables: IResizable[] = [];
+const preLoader = new PreloaderScreen(app);
+
 loader.onProgress.add((p) => {
   setVariable('progressBar', '--w', `${p.progress.toString()}%`);
   setVariable('loader', '--p', p.progress.toString());
+  preLoader.setProgress(p.progress);
 });
 
-function closeLoadingScreen(): void {
-  const loadingScreen = document.getElementById('loadingScreen');
-  if (loadingScreen) {
-    loadingScreen.style.display = 'none';
-  }
-}
+resizeables.push(preLoader);
+app.stage.addChild(preLoader);
 
 const scene = new Scene(app.stage);
 scene.addTicker(tweener);
 scene.deactivateAll();
+scene.show(false);
 
 function resize() {
   // app.stage.scale.x = window.innerWidth / bodyWidth;
   // app.stage.scale.y = window.innerHeight / bodyHeight;
   app.renderer.resize(window.innerWidth, window.innerHeight);
+
+  for (let i = 0; i < resizeables.length; i += 2) {
+    const r = resizeables[i];
+    r.resize(window.innerWidth, window.innerHeight);
+  }
 }
+
 window.addEventListener('resize', () => resize());
+
+function closeLoadingScreen(): void {
+  scene.show(true);
+
+  const loadingScreen = document.getElementById('loadingScreen');
+  if (loadingScreen) {
+    loadingScreen.style.display = 'none';
+  }
+
+  preLoader.visible = false;
+}
 
 // when loader is ready
 loader.load(() => {
-  setTimeout(() => closeLoadingScreen(), 1000);
+  setTimeout(() => closeLoadingScreen(), 10000);
 
   const fpsMeter = new FPSMeter(ticker);
 

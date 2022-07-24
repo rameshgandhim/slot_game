@@ -3,7 +3,7 @@ import * as PIXI from 'pixi.js';
 
 export const TextStyle = new PIXI.TextStyle({
   fontFamily: 'Arial',
-  fontSize: 28,
+  fontSize: 26,
   fontStyle: 'normal',
   fill: ['#ffffff'],
   // wordWrap: true,
