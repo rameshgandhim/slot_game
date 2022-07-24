@@ -24,6 +24,7 @@
     "seed"
   ],
   "dependencies": {
+    "@pixi/filter-blur": "^6.5.0",
     "pixi.js": "^6.3.2"
   },
   "devDependencies": {

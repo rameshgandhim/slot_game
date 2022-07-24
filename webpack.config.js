@@ -20,7 +20,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Pixi / Typescript seed',
+      title: 'Pixi / Slot Demo',
+      template: './src/index.html'
     }),
     new CopyPlugin({
       patterns: [{
