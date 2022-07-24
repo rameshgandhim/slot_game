@@ -26,9 +26,13 @@ export class Scene {
     this.gameObjects.push(g);
 
     if (isTickable(g)) {
-      this.tickers.push(g);
+      this.addTicker(g);
     }
     g.deactivate();
+  }
+
+  addTicker(g: ITick): void {
+    this.tickers.push(g);
   }
 
   tick(delta: number) {

@@ -4,17 +4,20 @@ import { GameObject } from './GameObject';
 import { SlotReel } from './Reel';
 import { ReelBand } from './Math';
 import { Tweener } from './Tween';
+import { ITick } from './ITick';
 
-export class ReelSet extends GameObject {
+export class ReelSet extends GameObject implements ITick {
   reels: SlotReel[] = [];
 
-  reelWidth = 250;
+  reelWidth = 125;
 
-  symbolSize = 240;
+  symbolSize = 120;
 
   symbolSpacing = 10;
 
   reelMargin: { x?: number, y?: number } = { x: 10, y: 10 };
+
+  running = false;
 
   constructor(private reelBands: ReelBand[],
     private tweener: Tweener,
@@ -29,9 +32,10 @@ export class ReelSet extends GameObject {
   buildReels(): void {
     for (let i = 0; i < this.reelBands.length; i += 1) {
       const reelBand = this.reelBands[i];
-      const reel = new SlotReel(this.tweener, this.symbolSize, reelBand);
+      const reel = new SlotReel(this.tweener, this.symbolSize, reelBand, i);
       reel.x = i * this.reelWidth + (this.reelMargin.x ?? 0);
       reel.y = (this.reelMargin.y ?? 0);
+      reel.onReelSpinComplete = () => this.onComplete(i);
       this.reels.push(reel);
       this.addChild(reel);
       reel.margin = this.symbolSpacing;
@@ -56,5 +60,36 @@ export class ReelSet extends GameObject {
     console.log('draw rect for ', maskHeight);
     this.addChild(mask);
     this.mask = mask;
+  }
+
+  startSpin() {
+    if (this.running) {
+      return;
+    }
+    this.running = true;
+
+    for (let i = 0; i < this.reels.length; i += 1) {
+      const r = this.reels[i];
+      r?.startSpin();
+    }
+  }
+
+  onComplete(reel: number): void {
+    if (reel === this.reels.length - 1) {
+      this.stop();
+    }
+  }
+
+  stop(): void {
+    this.running = false;
+  }
+
+  tick(): void {
+    if (this.running) {
+      for (let i = 0; i < this.reels.length; i += 1) {
+        const r = this.reels[i];
+        r.spin();
+      }
+    }
   }
 }

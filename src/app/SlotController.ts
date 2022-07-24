@@ -8,6 +8,7 @@ import { Tweener } from './Tween';
 import { GameObject } from './GameObject';
 import { MathEngine, GameResult } from './MathEngine';
 import { SlotWinPanel } from './SlotWinPanel';
+import { Scene } from './Scene';
 
 export class SlotController extends GameObject {
   readonly math: SlotMath;
@@ -22,11 +23,13 @@ export class SlotController extends GameObject {
 
   constructor(private loader: Loader,
     private tweener: Tweener,
-    private app: Application) {
+    private app: Application,
+    private scene: Scene) {
     super();
     this.math = this.loader.resources.math.data;
     this.mathEngine = new MathEngine(this.math);
     this.reelSet = this.createReelSet();
+    this.scene.addTicker(this.reelSet);
     this.addChild(this.reelSet);
     this.spinButton = this.createSpinButton();
     this.winPanel = this.createWinPanel();
@@ -34,7 +37,15 @@ export class SlotController extends GameObject {
     this.debugMath();
 
     this.reelSet.anchorX = 0.5;
-    this.reelSet.x = app.screen.width / 2;
+    this.resize();
+  }
+
+  resize() {
+    const centerX = this.app.screen.width / 2;
+    this.reelSet.x = centerX;
+    this.spinButton.x = centerX;
+    this.winPanel.x = centerX;
+    this.winPanel.y = this.spinButton.y + this.spinButton.height + 10;
   }
 
   debugMath() {
@@ -51,17 +62,24 @@ export class SlotController extends GameObject {
 
   createWinPanel(): SlotWinPanel {
     const winPanel = new SlotWinPanel(this.mathEngine);
+    // winPanel.anchorX = 0.5;
     this.addChild(winPanel);
     return winPanel;
   }
 
   createSpinButton(): Sprite {
     const button = new Sprite(Texture.from('spin'));
+    const buttonSize = 120;
     button.anchor.set(0.5);
     button.x = this.app.screen.width / 2;
-    button.y = 900;
-    button.pivot.set(0.5, 0.5);
-    button.anchor.set(0.5, 0.5);
+    button.y = this.math.Config.ReelHeight
+    * this.reelSet.symbolSize
+    + this.reelSet.symbolSpacing
+    * (this.math.Config.ReelHeight + 1) + 10;
+    button.scale.x = Math.min(buttonSize / button.width, buttonSize / button.height);
+    button.scale.y = button.scale.x;
+    button.pivot.set(0.5, 0);
+    button.anchor.set(0.5, 0);
 
     button.interactive = true;
     button.buttonMode = true;
@@ -78,8 +96,22 @@ export class SlotController extends GameObject {
 
   onSpinButton(): void {
     const result = this.mathEngine.playOneGame(1);
+    this.setReelOutcome(result);
     this.winPanel.buildWinPanel(result);
+    this.winPanel.anchorX = 0.5;
     this.printLog(result);
+  }
+
+  private setReelOutcome(result: GameResult) {
+    if (this.reelSet) {
+      for (let i = 0; i < this.reelSet.reels.length; i += 1) {
+        const r = this.reelSet.reels[i];
+        r.clearSymbols();
+        r.setStrip(result.stops[i]);
+      }
+      // disable spinning.
+      // this.reelSet.startSpin();
+    }
   }
 
   printLog(result: GameResult): void {

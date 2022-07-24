@@ -29,11 +29,16 @@ export class SlotReel extends GameObject {
 
   reelContainer: GameObject;
 
+  currStop = 0;
+
+  onReelSpinComplete?: () => void;
+
   constructor(private tweener: Tweener,
     private symbolSize: number,
-    private reelBand: ReelBand) {
+    private reelBand: ReelBand, reelIdx: number) {
     super();
     this.name = reelBand.name;
+    this.reelIndex = reelIdx;
     this.reelContainer = new GameObject();
     this.addChild(this.reelContainer);
     this.reelContainer.activate();
@@ -44,13 +49,46 @@ export class SlotReel extends GameObject {
     this.blur.blurX = 0;
     this.blur.blurY = 0;
     this.filters = [this.blur];
-    console.log('margin : ', this.margin);
+  }
+
+  getSymbolOnStop(stop: number): string {
+    const expected = stop % this.reelBand.Band.length;
+    const symbolTexture = this.reelBand.Band[expected];
+    return symbolTexture;
   }
 
   buildReelStrip(): void {
     if (this.reelContainer) {
       for (let i = 0; i < this.reelBand.Band.length; i += 1) {
         const symbolTexture = this.reelBand.Band[i];
+        const symbol = new Sprite();
+        symbol.texture = Texture.from(symbolTexture);
+        symbol.y = i * this.symbolY + this.margin;
+        symbol.scale.x = Math.min(this.symbolSize / symbol.width, this.symbolSize / symbol.height);
+        symbol.scale.y = symbol.scale.x;
+
+        symbol.x = Math.round((this.symbolSize - symbol.width) / 2);
+        this.symbols.push(symbol);
+        this.reelContainer.addChild(symbol);
+      }
+    }
+  }
+
+  clearSymbols() {
+    if (this.symbols) {
+      for (let i = 0; i < this.symbols.length; i += 1) {
+        const sym = this.symbols[i];
+        this.reelContainer.removeChild(sym);
+      }
+      this.symbols = [];
+    }
+  }
+
+  setStrip(stop: number): void {
+    if (this.reelContainer) {
+      for (let i = 0; i < this.reelHeight; i += 1) {
+        const expected = (stop + i) % this.reelBand.Band.length;
+        const symbolTexture = this.reelBand.Band[expected];
         const symbol = new Sprite();
         symbol.texture = Texture.from(symbolTexture);
         symbol.y = i * this.symbolY + this.margin;
@@ -105,7 +143,7 @@ export class SlotReel extends GameObject {
     }
   }
 
-  setStrip(reel: ReelBand) {
+  setStrip2(reel: ReelBand) {
     this.reelBand = reel;
     this.buildReelStrip();
   }
@@ -115,5 +153,8 @@ export class SlotReel extends GameObject {
   }
 
   onComplete(): void {
+    if (this.onReelSpinComplete) {
+      this.onReelSpinComplete();
+    }
   }
 }

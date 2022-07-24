@@ -33,12 +33,6 @@ const app = new Application({
   height: bodyHeight,
 });
 
-function resize() {
-  app.stage.scale.x = window.innerWidth / bodyWidth;
-  app.stage.scale.y = window.innerHeight / bodyHeight;
-  app.renderer.resize(window.innerWidth, window.innerHeight);
-}
-window.addEventListener('resize', () => resize());
 window.scrollTo(0, 1);
 
 document.body.appendChild(app.view);
@@ -70,8 +64,16 @@ function closeLoadingScreen(): void {
 }
 
 const scene = new Scene(app.stage);
-
+scene.addTicker(tweener);
 scene.deactivateAll();
+
+function resize() {
+  // app.stage.scale.x = window.innerWidth / bodyWidth;
+  // app.stage.scale.y = window.innerHeight / bodyHeight;
+  app.renderer.resize(window.innerWidth, window.innerHeight);
+}
+window.addEventListener('resize', () => resize());
+
 // when loader is ready
 loader.load(() => {
   setTimeout(() => closeLoadingScreen(), 1000);
@@ -80,9 +82,10 @@ loader.load(() => {
 
   scene.addGameObject(fpsMeter);
   fpsMeter.activate();
-  const slot = new SlotController(loader, tweener, app);
+  const slot = new SlotController(loader, tweener, app, scene);
   scene.addGameObject(slot);
   slot.activate();
+  window.addEventListener('resize', () => slot.resize());
 
   // closeLoadingScreen();
   ticker.add((delta: number) => {

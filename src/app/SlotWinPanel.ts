@@ -17,8 +17,9 @@ export class SlotWinPanel extends GameObject {
     this.clearWin();
     const winText = new Text(`Total wins: ${gameResult.totalWin}`, TextStyle);
     winText.name = 'Total Win';
-    winText.x = 100;
-    winText.y = 295;
+    winText.x = 0;
+    winText.y = 0;
+    // winText.width = 500;
     this.addText(winText);
     for (let i = 0; i < gameResult.pays.length; i += 1) {
       const pay = gameResult.pays[i];
@@ -26,8 +27,9 @@ export class SlotWinPanel extends GameObject {
       const str = `- payline ${pay.PayLineId}, ${this.calculateX(symbols)}, ${pay.Win}`;
       const text = new Text(str, TextStyle);
       text.name = `payline-${i}`;
-      text.x = 100;
-      text.y = 295 + 50 * (i + 1);
+      text.x = 0;
+      text.y = 40 * (i + 1);
+      // text.width = 500;
       this.addText(text);
     }
   }
@@ -43,6 +45,7 @@ export class SlotWinPanel extends GameObject {
         const t = this.texts[i];
         this.removeChild(t);
       }
+      this.texts = [];
     }
   }
 
