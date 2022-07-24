@@ -96,7 +96,7 @@ function closeLoadingScreen(): void {
 
 // when loader is ready
 loader.load(() => {
-  setTimeout(() => closeLoadingScreen(), 10000);
+  setTimeout(() => closeLoadingScreen(), 1000);
 
   const fpsMeter = new FPSMeter(ticker);
 
