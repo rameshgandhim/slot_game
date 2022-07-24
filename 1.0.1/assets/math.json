@@ -1,0 +1,577 @@
+{
+    "SymbolList": [
+        "hv1",
+        "hv2",
+        "hv3",
+        "hv4",
+        "lv1",
+        "lv2",
+        "lv3",
+        "lv4"
+    ],
+    "Config": {
+        "ReelHeight": 3
+    },
+    "ReelBands": [
+        {
+            "name": "Reel1",
+            "Band": [
+                "hv2",
+                "lv3",
+                "lv3",
+                "hv1",
+                "hv1",
+                "lv1",
+                "hv1",
+                "hv4",
+                "lv1",
+                "hv3",
+                "hv2",
+                "hv3",
+                "lv4",
+                "hv4",
+                "lv1",
+                "hv2",
+                "lv4",
+                "lv1",
+                "lv3",
+                "hv2"
+            ]
+        },
+        {
+            "name": "Reel2",
+            "Band": [
+                "hv1",
+                "lv2",
+                "lv3",
+                "lv2",
+                "lv1",
+                "lv1",
+                "lv4",
+                "lv1",
+                "lv1",
+                "hv4",
+                "lv3",
+                "hv2",
+                "lv1",
+                "lv3",
+                "hv1",
+                "lv1",
+                "lv2",
+                "lv4",
+                "lv3",
+                "lv2"
+            ]
+        },
+        {
+            "name": "Reel3",
+            "Band": [
+                "lv1",
+                "hv2",
+                "lv3",
+                "lv4",
+                "hv3",
+                "hv2",
+                "lv2",
+                "hv2",
+                "hv2",
+                "lv1",
+                "hv3",
+                "lv1",
+                "hv1",
+                "lv2",
+                "hv3",
+                "hv2",
+                "hv4",
+                "hv1",
+                "lv2",
+                "lv4"
+            ]
+        },
+        {
+            "name": "Reel4",
+            "Band": [
+                "hv2",
+                "lv2",
+                "hv3",
+                "lv2",
+                "lv4",
+                "lv4",
+                "hv3",
+                "lv2",
+                "lv4",
+                "hv1",
+                "lv1",
+                "hv1",
+                "lv2",
+                "hv3",
+                "lv2",
+                "lv3",
+                "hv2",
+                "lv1",
+                "hv3",
+                "lv2"
+            ]
+        },
+        {
+            "name": "Reel5",
+            "Band": [
+                "lv3",
+                "lv4",
+                "hv2",
+                "hv3",
+                "hv4",
+                "hv1",
+                "hv3",
+                "hv2",
+                "hv2",
+                "hv4",
+                "hv4",
+                "hv2",
+                "lv2",
+                "hv4",
+                "hv1",
+                "lv2",
+                "hv1",
+                "lv2",
+                "hv4",
+                "lv4"
+            ]
+        }
+    ],
+    "ComboList": [
+        {
+            "SymbolList": [
+                "hv1",
+                "hv1",
+                "hv1",
+                "any"
+            ],
+            "win": 10,
+            "Group": 0
+        },
+        {
+            "SymbolList": [
+                "hv1",
+                "hv1",
+                "hv1",
+                "hv1",
+                "any"
+            ],
+            "win": 20,
+            "Group": 0
+        },
+        {
+            "SymbolList": [
+                "hv1",
+                "hv1",
+                "hv1",
+                "hv1",
+                "hv1"
+            ],
+            "win": 50,
+            "Group": 0
+        },
+        {
+            "SymbolList": [
+                "hv2",
+                "hv2",
+                "hv2",
+                "any"
+            ],
+            "win": 5,
+            "Group": 1
+        },
+        {
+            "SymbolList": [
+                "hv2",
+                "hv2",
+                "hv2",
+                "hv2",
+                "any"
+            ],
+            "win": 10,
+            "Group": 1
+        },
+        {
+            "SymbolList": [
+                "hv2",
+                "hv2",
+                "hv2",
+                "hv2",
+                "hv2"
+            ],
+            "win": 20,
+            "Group": 1
+        },
+        {
+            "SymbolList": [
+                "hv3",
+                "hv3",
+                "hv3",
+                "any"
+            ],
+            "win": 5,
+            "Group": 2
+        },
+        {
+            "SymbolList": [
+                "hv3",
+                "hv3",
+                "hv3",
+                "hv3",
+                "any"
+            ],
+            "win": 10,
+            "Group": 2
+        },
+        {
+            "SymbolList": [
+                "hv3",
+                "hv3",
+                "hv3",
+                "hv3",
+                "hv3"
+            ],
+            "win": 15,
+            "Group": 2
+        },
+        {
+            "SymbolList": [
+                "hv4",
+                "hv4",
+                "hv4",
+                "any"
+            ],
+            "win": 5,
+            "Group": 3
+        },
+        {
+            "SymbolList": [
+                "hv4",
+                "hv4",
+                "hv4",
+                "hv4",
+                "any"
+            ],
+            "win": 10,
+            "Group": 3
+        },
+        {
+            "SymbolList": [
+                "hv4",
+                "hv4",
+                "hv4",
+                "hv4",
+                "hv4"
+            ],
+            "win": 15,
+            "Group": 3
+        },
+        {
+            "SymbolList": [
+                "lv1",
+                "lv1",
+                "lv1",
+                "any"
+            ],
+            "win": 2,
+            "Group": 4
+        },
+        {
+            "SymbolList": [
+                "lv1",
+                "lv1",
+                "lv1",
+                "lv1",
+                "any"
+            ],
+            "win": 5,
+            "Group": 4
+        },
+        {
+            "SymbolList": [
+                "lv1",
+                "lv1",
+                "lv1",
+                "lv1",
+                "lv1"
+            ],
+            "win": 10,
+            "Group": 4
+        },
+        {
+            "SymbolList": [
+                "lv2",
+                "lv2",
+                "lv2",
+                "any"
+            ],
+            "win": 1,
+            "Group": 5
+        },
+        {
+            "SymbolList": [
+                "lv2",
+                "lv2",
+                "lv2",
+                "lv2",
+                "any"
+            ],
+            "win": 2,
+            "Group": 5
+        },
+        {
+            "SymbolList": [
+                "lv2",
+                "lv2",
+                "lv2",
+                "lv2",
+                "lv2"
+            ],
+            "win": 5,
+            "Group": 5
+        },
+        {
+            "SymbolList": [
+                "lv3",
+                "lv3",
+                "lv3",
+                "any"
+            ],
+            "win": 1,
+            "Group": 6
+        },
+        {
+            "SymbolList": [
+                "lv3",
+                "lv3",
+                "lv3",
+                "lv3",
+                "any"
+            ],
+            "win": 2,
+            "Group": 6
+        },
+        {
+            "SymbolList": [
+                "lv3",
+                "lv3",
+                "lv3",
+                "lv3",
+                "lv3"
+            ],
+            "win": 3,
+            "Group": 6
+        },
+        {
+            "SymbolList": [
+                "lv4",
+                "lv4",
+                "lv4",
+                "any"
+            ],
+            "win": 1,
+            "Group": 7
+        },
+        {
+            "SymbolList": [
+                "lv4",
+                "lv4",
+                "lv4",
+                "lv4",
+                "any"
+            ],
+            "win": 2,
+            "Group": 7
+        },
+        {
+            "SymbolList": [
+                "lv4",
+                "lv4",
+                "lv4",
+                "lv4",
+                "lv4"
+            ],
+            "win": 3,
+            "Group": 7
+        }
+    ],
+    "PayLineList": [
+        {
+            "PayLineId": "1",
+            "PayLines": [
+                {
+                    "ReelIndex": 0,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 1,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 2,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 3,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 4,
+                    "SymolIndex": 1
+                }
+            ]
+        },
+        {
+            "PayLineId": "2",
+            "PayLines": [
+                {
+                    "ReelIndex": 0,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 1,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 2,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 3,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 4,
+                    "SymolIndex": 0
+                }
+            ]
+        },
+        {
+            "PayLineId": "3",
+            "PayLines": [
+                {
+                    "ReelIndex": 0,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 1,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 2,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 3,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 4,
+                    "SymolIndex": 2
+                }
+            ]
+        },
+        {
+            "PayLineId": "4",
+            "PayLines": [
+                {
+                    "ReelIndex": 0,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 1,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 2,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 3,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 4,
+                    "SymolIndex": 2
+                }
+            ]
+        },
+        {
+            "PayLineId": "5",
+            "PayLines": [
+                {
+                    "ReelIndex": 0,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 1,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 2,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 3,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 4,
+                    "SymolIndex": 0
+                }
+            ]
+        },
+        {
+            "PayLineId": "6",
+            "PayLines": [
+                {
+                    "ReelIndex": 0,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 1,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 2,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 3,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 4,
+                    "SymolIndex": 0
+                }
+            ]
+        },
+        {
+            "PayLineId": "7",
+            "PayLines": [
+                {
+                    "ReelIndex": 0,
+                    "SymolIndex": 2
+                },
+                {
+                    "ReelIndex": 1,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 2,
+                    "SymolIndex": 0
+                },
+                {
+                    "ReelIndex": 3,
+                    "SymolIndex": 1
+                },
+                {
+                    "ReelIndex": 4,
+                    "SymolIndex": 2
+                }
+            ]
+        }
+    ]
+}
