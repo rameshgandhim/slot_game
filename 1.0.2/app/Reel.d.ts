@@ -1,0 +1,34 @@
+import { Sprite } from 'pixi.js';
+import { BlurFilter } from '@pixi/filter-blur';
+import { GameObject } from './GameObject';
+import { Tweener } from './Tween';
+import { ReelBand } from './Math';
+export declare class SlotReel extends GameObject {
+    private tweener;
+    private symbolSize;
+    private reelBand;
+    reelsContainer: GameObject | undefined;
+    reelHeight: number;
+    margin: number;
+    spinDelay: number;
+    reelIndex: number;
+    symbols: Sprite[];
+    currPosition: number;
+    previousPosition: number;
+    blur: BlurFilter;
+    reelContainer: GameObject;
+    currStop: number;
+    onReelSpinComplete?: () => void;
+    constructor(tweener: Tweener, symbolSize: number, reelBand: ReelBand, reelIdx: number);
+    postInitialize(): void;
+    getSymbolOnStop(stop: number): string;
+    buildReelStrip(): void;
+    clearSymbols(): void;
+    setStrip(stop: number): void;
+    get symbolY(): number;
+    startSpin(): void;
+    spin(): void;
+    setStrip2(reel: ReelBand): void;
+    setStop(index: number): void;
+    onComplete(): void;
+}
